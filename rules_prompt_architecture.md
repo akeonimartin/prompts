@@ -1,34 +1,39 @@
-# General Rules for Prompt Architecture
+# General Principles of Prompt Architecture
 
 ---
 
 ## Introduction
 
-These rules govern the logical structure of prompts, not their visual formatting. A prompt does not require headings, numbering, or special layout to satisfy these principles. It may be written entirely in natural language, provided that:
+These principles govern the logical structure of prompts, not their visual formatting. A prompt need not use headings, numbering, or special layout to satisfy them. It may be written entirely in natural language, provided that:
 
-* the governing end is clear,
-* constraints are identifiable,
-* priority relations (if any) are intelligible, and
-* stop conditions are unambiguous (e.g., expressed using terms such as “until,” “after,” “once,” or “when complete”).
+* the governing end is intelligible,
+* material constraints are identifiable,
+* priority relations (if relevant) are clear, and
+* termination conditions are unambiguous (e.g., expressed with “until,” “after,” “once,” or “when complete”).
 
 Structure concerns cognitive organization, not typography.
 
-All examples below are written in ordinary natural language. They demonstrate that a prompt may satisfy these rules without formal sectioning or rigid formatting.
+These principles are architectural rather than mechanical. They are to be applied with judgment. Not every prompt requires maximal explicitness. Explicit articulation is required only to the degree necessary to prevent reasonable ambiguity or structural failure.
+
+The examples below demonstrate compliance in ordinary natural language without rigid formatting.
 
 ---
 
-# Meta-Governing Principles
+# Meta-Principles
 
 ## 0.1 Instructional Legibility
 
-A prompt must state plainly:
+A prompt must make the governing act intelligible without requiring reasonable guesswork.
+
+It should make clear—explicitly or implicitly:
 
 * what act is required,
 * what standard determines success,
-* what constraints apply, and
+* what constraints materially affect the outcome, and
 * when the task is complete.
 
-If any element requires guesswork, the prompt fails.
+Constraints intrinsic to the act-type need not be redundantly stated.
+If an essential element would require interpretation by guesswork, the prompt fails.
 
 **Adequate Example ⭕**
 “Summarize the attached article in 300 words. Preserve the author’s main argument. Do not add new claims. End after the summary.”
@@ -36,12 +41,17 @@ If any element requires guesswork, the prompt fails.
 **Inadequate Example ❌**
 “Write something about this article.”
 
+---
+
 ## 0.2 Proportionate Specification
 
-State constraints explicitly when they are not obvious.
+Explicitness should be proportionate to interpretive risk.
 
-* If a violation would not be immediately noticeable, make the constraint explicit.
-* As complexity increases, specify more constraints.
+* State constraints explicitly when their violation would not be immediately recognizable as failure relative to the governing end.
+* Do not restate constraints intrinsic to the act-type.
+* Increase specificity as task complexity increases.
+
+Under-specification invites drift. Over-specification introduces unnecessary rigidity. The aim is structural sufficiency.
 
 **Adequate Example ⭕**
 “Rank the proposals by cost-effectiveness. Use only the data provided. Explain your ranking criteria.”
@@ -56,9 +66,15 @@ State constraints explicitly when they are not obvious.
 
 ## 1. Ontological Admissibility
 
-Determine whether the act is possible before adding constraints.
+The act required must be possible.
 
-An act may be impossible in kind, impossible given available material, or normatively excluded.
+Before adding constraints, ensure the task is:
+
+* possible in kind,
+* possible given available material, and
+* not normatively excluded.
+
+If feasibility depends on conditions, state them.
 
 **Adequate Example ⭕**
 “If the dataset is incomplete, state that analysis cannot be performed.”
@@ -66,6 +82,8 @@ An act may be impossible in kind, impossible given available material, or normat
 **Inadequate Example ❌**
 “Provide a statistical comparison,”
 when no data has been supplied.
+
+---
 
 ## 1a. Conditional Impossibility
 
@@ -76,6 +94,8 @@ A task is conditionally impossible when required material:
 * was not supplied, or
 * cannot be reached with available means.
 
+Where such risk exists, delimit it.
+
 **Adequate Example ⭕**
 “Translate the following paragraph into Spanish:” (paragraph included)
 
@@ -83,11 +103,13 @@ A task is conditionally impossible when required material:
 “Translate the following paragraph into Spanish:”
 (no paragraph provided)
 
+---
+
 ## 2. Single Governing End
 
-Each prompt must specify one governing end.
+A prompt must have one governing end.
 
-Other constraints may guide how it is achieved but may not function as independent ends.
+Other instructions may guide execution, but they may not function as independent, competing ends.
 
 **Adequate Example ⭕**
 “Argue that policy X is economically beneficial. Use three empirical studies as support.”
@@ -96,14 +118,18 @@ Other constraints may guide how it is achieved but may not function as independe
 “Argue for policy X, summarize three studies, and provide a neutral overview.”
 (Competing ends.)
 
-## 3. Kinds of End
+---
 
-* The **governing end** defines success.
-* The **intrinsic end** defines correctness for the act-type.
-* **Instrumental ends** support the governing end.
-* **Stop conditions** mark termination only.
+## 3. Hierarchy of Ends
 
-Instrumental or terminal ends may not override governing or intrinsic ends.
+Distinguish:
+
+* **Governing end** — defines success
+* **Intrinsic end** — defines correctness for the act-type
+* **Instrumental ends** — support the governing end
+* **Stop conditions** — define termination only
+
+Instrumental or terminal conditions may not override governing or intrinsic ends.
 
 **Adequate Example ⭕**
 “Explain the theorem accurately. Use clear headings. Limit to 500 words.”
@@ -111,44 +137,50 @@ Instrumental or terminal ends may not override governing or intrinsic ends.
 
 **Inadequate Example ❌**
 “Keep it under 200 words even if key definitions must be omitted.”
-(Word limit overrides intrinsic end of explanation.)
+(Word limit overrides intrinsic end.)
 
 ---
 
 # II. Constraint Governance
 
-## 4. Constraints Shape Reasoning
+## 4. Material Relevance of Constraints
 
-Each constraint must affect reasoning, ordering, or success conditions.
+Every stated constraint must affect reasoning, ordering, or success conditions.
+
+Decorative or vague constraints degrade clarity.
 
 **Adequate Example ⭕**
 “Evaluate only arguments explicitly stated in the text.”
-(Changes scope of reasoning.)
+(Alters scope of reasoning.)
 
 **Inadequate Example ❌**
 “Write in an interesting way.”
-(No clear effect on reasoning or success criteria.)
+(No determinate effect on reasoning.)
 
-## 5. Declared Priority Rules
+---
 
-If constraints could conflict, specify which overrides which.
+## 5. Declared Priority
 
-Priority rules must be explicit and consistent.
+If constraints could conflict, establish priority.
+
+Priority relations must be explicit where ambiguity is plausible.
 
 **Adequate Example ⭕**
 “If factual accuracy conflicts with brevity, prioritize accuracy.”
 
 **Inadequate Example ❌**
 “Be thorough and concise.”
-(No rule for resolving conflict.)
+(No conflict resolution.)
 
 ---
 
 # III. Structural Expression
 
-## 6. Structure Mirrors the Cognitive Task
+## 6. Structure Should Mirror the Task
 
-Output structure must reflect stages of reasoning.
+Where the task has ordered stages of reasoning, the output structure should reflect them.
+
+Explicit staging is required when the sequence materially affects correctness.
 
 **Adequate Example ⭕**
 “First define the problem, then evaluate the options, and finally justify the conclusion.”
@@ -157,19 +189,25 @@ Output structure must reflect stages of reasoning.
 “Discuss the issue.”
 (No structural guidance.)
 
-## 7. Define Key Distinctions Once
+---
 
-Introduce key terms once and use them consistently.
+## 7. Terminological Stability
+
+Key distinctions should be defined once and used consistently.
+
+Synonym drift creates conceptual instability.
 
 **Adequate Example ⭕**
 “Define ‘intrinsic end’ and ‘instrumental end’ before applying them.”
 
 **Inadequate Example ❌**
-Use “goal,” “purpose,” and “end” interchangeably without definition.
+Using “goal,” “purpose,” and “end” interchangeably without clarification.
+
+---
 
 ## 8. Material Adequacy
 
-Provide or delimit the material required for judgment.
+Provide or delimit the material required for judgment when it is not self-evident.
 
 **Adequate Example ⭕**
 “Using only the attached five proposals, rank them by feasibility.”
@@ -182,46 +220,56 @@ Provide or delimit the material required for judgment.
 
 # IV. Failure Prevention
 
-## 9. Explicit Failure Conditions
+## 9. Diagnosable Failure Conditions
 
-Failure must be structurally diagnosable.
+Where ambiguity is likely, define structural failure conditions.
+
+Failure should be determinable without subjective preference.
 
 **Adequate Example ⭕**
 “The response fails if it introduces claims not present in the source text.”
 
 **Inadequate Example ❌**
 “The response fails if it is unsatisfactory.”
-(Subjective and undefined.)
+(Undefined standard.)
 
-## 10. Near-Miss Exclusion
+---
 
-Prevent responses that satisfy surface constraints while missing the governing end.
+## 10. Near-Miss Prevention
+
+Guard against responses that satisfy surface constraints while violating the governing end.
+
+Clarify the species of act when confusion is plausible.
 
 **Adequate Example ⭕**
 “Do not summarize; analyze the author’s reasoning.”
 
 **Inadequate Example ❌**
 “Write about the article.”
-(Allows summary instead of analysis.)
+(Allows drift.)
 
 ---
 
 # V. Agency and Termination
 
-## 11. Agent Role
+## 11. Specify the Species of Act
 
-Specify the species of act required.
+Where ambiguity is plausible, identify the act-type required.
+
+Explanation, proof, summary, analysis, critique, and synthesis are distinct species.
 
 **Adequate Example ⭕**
 “Provide a formal logical proof, not an intuitive explanation.”
 
 **Inadequate Example ❌**
 “Explain why this is true.”
-(Does not distinguish proof from explanation.)
+(Ambiguous act-type.)
 
-## 12. Instrumental Specification
+---
 
-If tools are required, specify them or state selection criteria.
+## 12. Instrumental Conditions
+
+If particular tools, sources, or methods are required, specify them when omission would materially alter the result.
 
 **Adequate Example ⭕**
 “Use only peer-reviewed sources published after 2015.”
@@ -230,9 +278,13 @@ If tools are required, specify them or state selection criteria.
 “Research this topic.”
 (No instrument conditions.)
 
-## 13. Structural Stop Conditions
+---
 
-Specify when the task is complete in structural terms.
+## 13. Structural Termination
+
+Termination should correspond to structural completion, not mere quantity.
+
+Quantitative limits are subordinate unless they define the governing end.
 
 **Adequate Example ⭕**
 “Revise the draft until each paragraph has one clear claim and supporting evidence. Stop once all paragraphs meet this condition.”
@@ -240,3 +292,9 @@ Specify when the task is complete in structural terms.
 **Inadequate Example ❌**
 “Write at least 1,000 words.”
 (Quantitative but not structurally complete.)
+
+---
+
+# Closing Note
+
+These principles aim at structural clarity, unity of end, and proportional explicitness. They do not require maximal verbosity or formalized layout. A prompt satisfies them when it secures intelligible action without inviting ambiguity or internal contradiction.
