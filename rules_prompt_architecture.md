@@ -276,14 +276,4 @@ Completion should be based on structural criteria, not just length.
 
 # Summary
 
-A well-formed prompt:
-
-* States one clear objective
-* Ensures the task is possible
-* Uses constraints that actually matter
-* Sets scope and level when needed
-* Prevents ambiguity and drift
-* Makes completion and failure identifiable
-
-Clarity increases as complexity increases.
-Explicitness should always be proportionate to risk.
+A well-formed prompt states one clear objective, ensures that the task is actually possible, and uses constraints that meaningfully shape the outcome rather than decorate it. When necessary, it defines the scope of the task and clarifies the level of analysis, preventing ambiguity or drift into adjacent but unintended responses. It also makes both completion and failure structurally identifiable. As tasks become more complex, clarity must increase accordingly, and explicitness should always be proportionate to the risk of misinterpretation.
